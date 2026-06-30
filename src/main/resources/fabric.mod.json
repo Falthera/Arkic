@@ -1,0 +1,20 @@
+modId: arkic
+version: ${version}
+displayName: Arkic
+description: GPU-driven rendering backend for Sodium. Shifts chunk rendering to the GPU using compute shaders, SSBOs, and MultiDrawIndirect for reduced CPU overhead on OpenGL 4.6.
+authors: [Falthera]
+license: MIT
+environment: client
+entrypoints:
+  main:
+    value: dev.arkic.Arkic
+  client:
+    value: dev.arkic.client.ArkicClient
+mixins:
+  - "arkic.mixins.json"
+depends:
+  minecraft: "~${minecraft_version}"
+  fabricloader: ">=${loader_version}"
+  sodium: ">=0.5.8"
+recommends:
+  sodium: "*"

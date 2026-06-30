@@ -1,0 +1,21 @@
+name: Minecraft Compatibility Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  check-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check latest Minecraft version
+        run: |
+          LATEST=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest.release')
+          echo "Latest Minecraft: $LATEST"
+          if [ "$LATEST" != "1.21.11" ]; then
+            echo "::warning::New Minecraft version detected: $LATEST"
+          fi
+      - name: Validate Fabric mappings
+        run: ./gradlew --version

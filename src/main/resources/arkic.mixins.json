@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "dev.arkic.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftClientMixin",
+    "WorldRendererMixin",
+    "ChunkBuilderMixin",
+    "SectionBuilderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
